@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         巴哈姆特動畫瘋 - 截圖工具
 // @namespace    Sayuki2123
-// @version      1.0.0
+// @version      1.0.1
 // @description  動畫瘋的截圖工具，可以記錄截圖並提供時間跳轉、預覽、複製、下載以及合併截圖等功能
 // @author       Sayuki2123
 // @homepage     https://github.com/Sayuki2123/user-scripts/tree/main/BahamutAnime#截圖工具
@@ -456,7 +456,7 @@
   }
 
   function setSliderPosition(currentSlider, value) {
-    const currentValue = value || parseInt(currentSlider.value);
+    const currentValue = value ?? parseInt(currentSlider.value);
     const position = currentSlider.className.match(/(?<=--)\w+/)[0];
 
     currentSlider.value = currentValue;
@@ -912,6 +912,10 @@
         content: "\\f24d";
       }
 
+      .BH_background {
+        overflow-x: unset;
+      }
+
       .vjs-screenshot-button {
         cursor: pointer;
         opacity: 0.7;
@@ -1056,11 +1060,17 @@
         padding: 8px 12px 0;
         font-size: 18px;
         background-color: var(--card-bg);
+        user-select: none;
       }
 
       .animaid-gallery__toolbar {
+        position: sticky;
+        top: 100px;
+        z-index: 1;
         display: flex;
-        margin: 4px;
+        padding: 4px;
+        margin-bottom: 186px;
+        background-color: var(--card-bg);
       }
 
       .animaid-gallery__button {
@@ -1137,9 +1147,9 @@
         flex-wrap: wrap;
         align-items: start;
         padding-bottom: 8px;
+        margin-top: -186px;
         border-bottom: 1px solid var(--seperator-transparent);
         outline: none;
-        user-select: none;
       }
 
       .animaid-gallery__item {
@@ -1293,9 +1303,10 @@
         background-color: var(--gallery-bg-trans-dark);
 
         > .animaid-gallery__toolbar {
+          top: 0;
           width: 77.5%;
-          padding: 8px 4px 0;
           margin: auto;
+          background-color: unset;
         }
 
         > .animaid-gallery__item-list {
@@ -1338,6 +1349,7 @@
           width: 100%;
           height: 100%;
           padding-bottom: 0;
+          margin-top: 0;
           background-color: var(--gallery-bg-trans-dark);
           border-bottom: 0;
 
