@@ -8,7 +8,7 @@
 
 #### 安裝
 
-[FixSearchBarPosition.user.js](FixSearchBarPosition.user.js?raw=true)
+[FixSearchBarPosition.user.js](https://github.com/Sayuki2123/user-scripts/raw/main/PTT/FixSearchBarPosition.user.js)
 
 #### 功能
 
@@ -16,7 +16,7 @@
 
 #### 預覽
 
-![搜尋文章](assets/fix-search-bar-position.jpg?raw=true)
+![搜尋文章](assets/fix-search-bar-position.jpg)
 
 #### 更新日誌
 
@@ -27,7 +27,7 @@
 
 #### 安裝
 
-[FormatPost.user.js](FormatPost.user.js?raw=true)
+[FormatPost.user.js](https://github.com/Sayuki2123/user-scripts/raw/main/PTT/FormatPost.user.js)
 
 #### 功能
 
@@ -42,7 +42,7 @@
 
 | 修改前 | 修改後 |
 | ------ | ------ |
-| ![修改前](assets/format-post_before.jpg?raw=true) | ![修改後](assets/format-post_after.jpg?raw=true) |
+| ![修改前](assets/format-post_before.jpg) | ![修改後](assets/format-post_after.jpg) |
 
 #### 更新日誌
 
@@ -61,7 +61,7 @@
 
 #### 安裝
 
-[ImageViewer.user.js](ImageViewer.user.js?raw=true)
+[ImageViewer.user.js](https://github.com/Sayuki2123/user-scripts/raw/main/PTT/ImageViewer.user.js)
 
 #### 功能
 
@@ -69,7 +69,7 @@
 
 #### 預覽
 
-![圖片檢視器](assets/image-viewer.jpg?raw=true)
+![圖片檢視器](assets/image-viewer.jpg)
 
 #### 更新日誌
 

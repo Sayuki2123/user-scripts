@@ -6,7 +6,7 @@
 
 #### 安裝
 
-[AutoGetWelcomePoint.user.js](AutoGetWelcomePoint.user.js?raw=true)
+[AutoGetWelcomePoint.user.js](https://github.com/Sayuki2123/user-scripts/raw/main/Cmoa/AutoGetWelcomePoint.user.js)
 
 #### 功能
 

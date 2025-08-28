@@ -6,7 +6,7 @@
 
 #### 安裝
 
-[ShowAllEpisodes.user.js](ShowAllEpisodes.user.js?raw=true)
+[ShowAllEpisodes.user.js](https://github.com/Sayuki2123/user-scripts/raw/main/Narou/ShowAllEpisodes.user.js)
 
 #### 功能
 
@@ -20,13 +20,13 @@
 
 * 顯示全部章節
 
-  ![顯示全部章節](assets/show-all-episodes.gif?raw=true)
+  ![顯示全部章節](assets/show-all-episodes.gif)
 
 * 目錄連結
   * 10 頁以下<br>
-    ![目錄1](assets/show-all-episodes_index_1.jpg?raw=true)
+    ![目錄1](assets/show-all-episodes_index_1.jpg)
   * 11 頁以上<br>
-    ![目錄2](assets/show-all-episodes_index_2.jpg?raw=true)
+    ![目錄2](assets/show-all-episodes_index_2.jpg)
 
 #### 更新日誌
 

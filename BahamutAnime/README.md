@@ -9,7 +9,7 @@
 
 #### 安裝
 
-[AniMaid.user.js](AniMaid.user.js?raw=true)
+[AniMaid.user.js](https://github.com/Sayuki2123/user-scripts/raw/main/BahamutAnime/AniMaid.user.js)
 
 #### 功能
 
@@ -51,7 +51,7 @@
 
 #### 預覽
 
-![AniMaid 設定](assets/animaid.jpg?raw=true)
+![AniMaid 設定](assets/animaid.jpg)
 
 #### 更新日誌
 
@@ -90,7 +90,7 @@
 
 #### 安裝
 
-[AniMaidGallery.user.js](AniMaidGallery.user.js?raw=true)
+[AniMaidGallery.user.js](https://github.com/Sayuki2123/user-scripts/raw/main/BahamutAnime/AniMaidGallery.user.js)
 
 #### 功能
 
@@ -164,19 +164,19 @@
 #### 預覽
 
 * 截圖列表
-  ![截圖列表](assets/gallery_list.jpg?raw=true)
+  ![截圖列表](assets/gallery_list.jpg)
 
 * 預覽模式
-  ![預覽模式](assets/gallery_preview.jpg?raw=true)
+  ![預覽模式](assets/gallery_preview.jpg)
 
 * 全螢幕模式
-  ![全螢幕模式](assets/gallery_fullscreen.jpg?raw=true)
+  ![全螢幕模式](assets/gallery_fullscreen.jpg)
 
 * 合併字幕
-  ![合併字幕](assets/gallery_collage_1.gif?raw=true)
+  ![合併字幕](assets/gallery_collage_1.gif)
 
 * 合併截圖
-  ![合併截圖](assets/gallery_collage_2.gif?raw=true)
+  ![合併截圖](assets/gallery_collage_2.gif)
 
 #### 更新日誌
 
@@ -205,7 +205,7 @@
 
 #### 安裝
 
-[NoAutoPlay.user.js](NoAutoPlay.user.js?raw=true)
+[NoAutoPlay.user.js](https://github.com/Sayuki2123/user-scripts/raw/main/BahamutAnime/NoAutoPlay.user.js)
 
 #### 功能
 
@@ -223,7 +223,7 @@
 
 #### 安裝
 
-[FacebookWidget.user.js](FacebookWidget.user.js?raw=true)
+[FacebookWidget.user.js](https://github.com/Sayuki2123/user-scripts/raw/main/BahamutAnime/FacebookWidget.user.js)
 
 #### 功能
 
@@ -231,7 +231,7 @@
 
 #### 預覽
 
-![facebook](assets/facebook-widget.jpg?raw=true)
+![facebook](assets/facebook-widget.jpg)
 
 #### 更新日誌
 

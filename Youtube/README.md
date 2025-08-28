@@ -6,7 +6,7 @@
 
 #### 安裝
 
-[AutoCloseChatRoom.user.js](AutoCloseChatRoom.user.js?raw=true)
+[AutoCloseChatRoom.user.js](https://github.com/Sayuki2123/user-scripts/raw/main/Youtube/AutoCloseChatRoom.user.js)
 
 #### 功能
 

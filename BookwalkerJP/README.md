@@ -7,7 +7,7 @@
 
 #### 安裝
 
-[HighlightTrialBooks.user.js](HighlightTrialBooks.user.js?raw=true)
+[HighlightTrialBooks.user.js](https://github.com/Sayuki2123/user-scripts/raw/main/BookwalkerJP/HighlightTrialBooks.user.js)
 
 #### 功能
 
@@ -20,7 +20,7 @@
 
 #### 預覽
 
-![試閱標示](assets/highlight-trial-books.jpg?raw=true)
+![試閱標示](assets/highlight-trial-books.jpg)
 
 #### 更新日誌
 
@@ -31,7 +31,7 @@
 
 #### 安裝
 
-[FasterSwiper.user.js](FasterSwiper.user.js?raw=true)
+[FasterSwiper.user.js](https://github.com/Sayuki2123/user-scripts/raw/main/BookwalkerJP/FasterSwiper.user.js)
 
 #### 功能
 

@@ -6,7 +6,7 @@
 
 #### 安裝
 
-[SidebarEnhancer.user.js](SidebarEnhancer.user.js?raw=true)
+[SidebarEnhancer.user.js](https://github.com/Sayuki2123/user-scripts/raw/main/Kakuyomu/SidebarEnhancer.user.js)
 
 #### 功能
 

@@ -11,7 +11,7 @@
 
 #### 安裝
 
-[ForumWatchLater.user.js](ForumWatchLater.user.js?raw=true)
+[ForumWatchLater.user.js](https://github.com/Sayuki2123/user-scripts/raw/main/Bahamut/ForumWatchLater.user.js)
 
 #### 功能
 
@@ -29,9 +29,9 @@
 #### 預覽
 
 * 加入稍後觀看按鈕<br>
-  ![稍後觀看按鈕](assets/forum-watch-later_button.jpg?raw=true)
+  ![稍後觀看按鈕](assets/forum-watch-later_button.jpg)
 * 稍後觀看列表<br>
-  ![稍後觀看列表](assets/forum-watch-later_list.jpg?raw=true)
+  ![稍後觀看列表](assets/forum-watch-later_list.jpg)
 
 #### 更新日誌
 
@@ -54,7 +54,7 @@
 
 #### 安裝
 
-[ForumSearchHistoryRemover.user.js](ForumSearchHistoryRemover.user.js?raw=true)
+[ForumSearchHistoryRemover.user.js](https://github.com/Sayuki2123/user-scripts/raw/main/Bahamut/ForumSearchHistoryRemover.user.js)
 
 #### 功能
 
@@ -62,7 +62,7 @@
 
 #### 預覽
 
-![刪除搜尋紀錄](assets/forum-search-history-remover.gif?raw=true)
+![刪除搜尋紀錄](assets/forum-search-history-remover.gif)
 
 #### 更新日誌
 
@@ -76,7 +76,7 @@
 
 #### 安裝
 
-[ForumLastBoardMaxNumber.user.js](ForumLastBoardMaxNumber.user.js?raw=true)
+[ForumLastBoardMaxNumber.user.js](https://github.com/Sayuki2123/user-scripts/raw/main/Bahamut/ForumLastBoardMaxNumber.user.js)
 
 #### 功能
 
@@ -95,7 +95,7 @@
 
 #### 安裝
 
-[ForumLastBoardRecordRule.user.js](ForumLastBoardRecordRule.user.js?raw=true)
+[ForumLastBoardRecordRule.user.js](https://github.com/Sayuki2123/user-scripts/raw/main/Bahamut/ForumLastBoardRecordRule.user.js)
 
 #### 功能
 
@@ -114,7 +114,7 @@
 
 #### 安裝
 
-[AutoCloseHomepageAd.user.js](AutoCloseHomepageAd.user.js?raw=true)
+[AutoCloseHomepageAd.user.js](https://github.com/Sayuki2123/user-scripts/raw/main/Bahamut/AutoCloseHomepageAd.user.js)
 
 #### 功能
 
@@ -129,7 +129,7 @@
 
 #### 安裝
 
-[HideAutoSigninWindow.user.js](HideAutoSigninWindow.user.js?raw=true)
+[HideAutoSigninWindow.user.js](https://github.com/Sayuki2123/user-scripts/raw/main/Bahamut/HideAutoSigninWindow.user.js)
 
 #### 功能
 
