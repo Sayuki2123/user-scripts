@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PTT - 統一文章格式
 // @namespace    Sayuki2123
-// @version      1.2.0
+// @version      1.2.1
 // @description  統一 PTT 網頁版的文章和推文的格式並顯示樓層數
 // @author       Sayuki2123
 // @homepage     https://github.com/Sayuki2123/user-scripts/tree/main/PTT#統一文章格式
@@ -441,7 +441,7 @@
 
         if (node.nodeName === 'SPAN') {
           if (
-            !(node.classList.contains('hl') || node.className === 'f3')
+            (node.className === 'f2' && node.textContent.startsWith('※'))
             || (node.classList.contains('f0') && node.textContent.includes('刪除'))
             || node.textContent.startsWith('＠')
           ) {
