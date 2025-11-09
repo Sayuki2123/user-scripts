@@ -2,6 +2,7 @@
 
 * [醒目標示期間限定免費版本](#醒目標示期間限定免費版本)
 * [優惠活動輪播加速](#優惠活動輪播加速)
+* [搜尋條件的儲存數量限制解除](#搜尋條件的儲存數量限制解除)
 
 ## 醒目標示期間限定免費版本
 
@@ -42,5 +43,20 @@
 
 * v1.1.0
   * 新增滑鼠停留在左右按鈕上時，會向按鈕方向加快輪播速度
+* v1.0.0
+  * 初版
+
+## 搜尋條件的儲存數量限制解除
+
+#### 安裝
+
+[UnlimitedManualSearchHistory.user.js](https://github.com/Sayuki2123/user-scripts/raw/main/BookwalkerJP/UnlimitedManualSearchHistory.user.js)
+
+#### 功能
+
+* 解除搜尋條件的儲存數量限制
+
+#### 更新日誌
+
 * v1.0.0
   * 初版
