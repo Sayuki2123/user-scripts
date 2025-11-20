@@ -1,36 +1,36 @@
 // ==UserScript==
 // @name         巴哈姆特 - 哈拉區首頁最近閱覽看板
 // @namespace    Sayuki2123
-// @version      1.0.0
+// @version      1.0.1
 // @description  在哈拉區新版首頁顯示舊版的最近閱覽看板區域
 // @author       Sayuki2123
 // @homepage     https://github.com/Sayuki2123/user-scripts/tree/main/Bahamut#哈拉區首頁最近閱覽看板
 // @supportURL   https://github.com/Sayuki2123/user-scripts/issues
 // @match        https://forum.gamer.com.tw/
+// @match        https://forum.gamer.com.tw/?c=*
 // @icon         https://i2.bahamut.com.tw/favicon.svg
 // @grant        none
+// @run-at       document-end
 // ==/UserScript==
 
 (() => {
   'use strict';
 
-  window.addEventListener('load', () => {
-    if (checkItem()) {
-      addList();
+  if (checkItem()) {
+    addList();
+    return;
+  }
+
+  const observer = new MutationObserver((_, observer) => {
+    if (!checkItem()) {
       return;
     }
 
-    const observer = new MutationObserver((_, observer) => {
-      if (!checkItem()) {
-        return;
-      }
-
-      observer.disconnect();
-      addList();
-    });
-
-    observer.observe(document.getElementById('global-aside'), { childList: true, subtree: true });
+    observer.disconnect();
+    addList();
   });
+
+  observer.observe(document.querySelector('aside'), { childList: true, subtree: true });
 
   function checkItem() {
     return document.querySelector('[class*=myBoard_boardItem__]') != null;
