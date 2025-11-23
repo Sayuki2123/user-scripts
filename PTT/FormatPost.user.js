@@ -1,21 +1,21 @@
 // ==UserScript==
 // @name         PTT - 統一文章格式
 // @namespace    Sayuki2123
-// @version      1.2.1
+// @version      1.2.2
 // @description  統一 PTT 網頁版的文章和推文的格式並顯示樓層數
 // @author       Sayuki2123
 // @homepage     https://github.com/Sayuki2123/user-scripts/tree/main/PTT#統一文章格式
 // @supportURL   https://github.com/Sayuki2123/user-scripts/issues
 // @match        https://www.ptt.cc/*/M.*.html
 // @grant        none
-// @run-at       document-body
+// @run-at       document-end
 // ==/UserScript==
 
 (() => {
   'use strict';
 
-  document.addEventListener('DOMContentLoaded', formatPost);
   addStyle();
+  formatPost();
 
   function formatPost() {
     const mainContent = document.getElementById('main-content');
@@ -35,7 +35,7 @@
     checkPostLink();
     checkFooter();
     checkMissingPushTag();
-    checkMissingPush();
+    fixPush();
     markPush();
     formatPush();
     formatReply();
@@ -149,16 +149,36 @@
       });
     }
 
-    function checkMissingPush() {
+    function fixPush() {
       const regex = /^[推噓→※]/;
+      const nodes = [
+        ...mainContent.querySelectorAll('.hl, .f2'),
+        ...Array.prototype.filter.call(mainContent.childNodes, (node) => node.nodeType === Node.TEXT_NODE)
+      ];
 
-      mainContent.querySelectorAll('.hl, .f2').forEach((pushTag) => {
+      nodes.forEach((pushTag) => {
         if (!regex.test(pushTag.textContent)) {
           return;
         }
 
         if (!fixPushTag(pushTag) || pushTag.parentNode.classList.contains('push')) {
           return;
+        }
+
+        if (pushTag.nodeType === Node.TEXT_NODE) {
+          const node = document.createElement('span');
+
+          node.className =
+            pushTag.textContent.startsWith('※')
+              ? 'f2'
+              : pushTag.textContent.startsWith('推')
+                ? 'hl'
+                : 'f1 hl';
+
+          pushTag.parentNode.insertBefore(node, pushTag);
+          node.append(pushTag);
+
+          pushTag = pushTag.parentNode;
         }
 
         const pushId = pushTag.nextSibling;
@@ -200,14 +220,10 @@
           nodeTag.textContent = nodeTag.textContent.substring(0, 2);
         }
 
-        if (!fixPushId(nodeTag.nextSibling, remainder)) {
-          return false;
-        }
-
-        return true;
+        return fixPushId(nodeTag.nextSibling, remainder);
       }
 
-      function fixPushId(node, privRemainder = null) {
+      function fixPushId(node, privRemainder) {
         if (node.nodeType === Node.TEXT_NODE || node.nextSibling == null) {
           return false;
         }
@@ -248,14 +264,10 @@
           nodeId.textContent = id;
         }
 
-        if (!fixPushContent(nextNode, remainder)) {
-          return false;
-        }
-
-        return true;
+        return fixPushContent(nextNode, remainder);
       }
 
-      function fixPushContent(node, privRemainder = null) {
+      function fixPushContent(node, privRemainder) {
         if (node.nextSibling == null) {
           return false;
         }
@@ -283,11 +295,12 @@
       function fixPushDate(node) {
         let nodeDateTime = node;
         let dateText;
-        const regex = /((\d{1,3}\.){3}\d{1,3}\s+)?\d{2}\/\d{2}(\s+\d{2}:\d{2})?/;
+        const regex = /((\d{1,3}\.){3}\d{1,3}\s+)?(\d\n?){2}\/(\d\n?){2}(\s+(\d\n?){2}:(\d\n?){2})?/;
+        const getDateText = (node, pattern) => node.textContent.match(pattern)?.at(0)?.trim();
 
         if (
           (nodeDateTime.nodeName === 'SPAN' || nodeDateTime.nodeType === Node.TEXT_NODE)
-          && (dateText = nodeDateTime.textContent.match(regex)?.at(0)) != null
+          && (dateText = getDateText(nodeDateTime, regex)) != null
         ) {
           if (nodeDateTime.textContent.trim() !== dateText) {
             // ipdatetime + 其他內容
@@ -303,7 +316,7 @@
 
           // 可能在推文裡面，先往前面找
           let tempNode = nodeDateTime.previousSibling.lastChild;
-          dateText = tempNode.textContent.match(regex)?.at(0);
+          dateText = getDateText(tempNode, regex);
 
           if (dateText != null) {
             isMissingNode = true;
@@ -317,7 +330,7 @@
                 break;
               }
 
-              dateText = tempNode.textContent.match(regex)?.at(0);
+              dateText = getDateText(tempNode, regex);
             };
 
             if (dateText == null || tempNode == null) {
@@ -418,7 +431,7 @@
       const regex = /(\d{1,3}\.){3}\d{1,3}\s+/;
 
       mainContent.querySelectorAll('.push-ipdatetime').forEach((pushDateTime) => {
-        pushDateTime.textContent = pushDateTime.textContent.replace(regex, '').trim();
+        pushDateTime.textContent = pushDateTime.textContent.replaceAll('\n', '').replace(regex, '').trim();
       });
 
       // push-floor
@@ -430,7 +443,7 @@
     }
 
     function formatReply() {
-      let node = mainContent.querySelector('.article-footer') ?? mainContent.querySelector('push');
+      let node = mainContent.querySelector('.article-footer') ?? mainContent.querySelector('.push');
 
       while ((node = node?.nextSibling) != null) {
         if (node.nodeName === 'DIV' || node.textContent.startsWith('◆ From:')) {
