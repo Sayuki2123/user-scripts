@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         巴哈姆特 - 哈拉區首頁最近閱覽看板
 // @namespace    Sayuki2123
-// @version      1.0.1
+// @version      1.0.2
 // @description  在哈拉區新版首頁顯示舊版的最近閱覽看板區域
 // @author       Sayuki2123
 // @homepage     https://github.com/Sayuki2123/user-scripts/tree/main/Bahamut#哈拉區首頁最近閱覽看板
@@ -16,25 +16,14 @@
 (() => {
   'use strict';
 
-  if (checkItem()) {
-    addList();
-    return;
-  }
-
   const observer = new MutationObserver((_, observer) => {
-    if (!checkItem()) {
-      return;
-    }
-
     observer.disconnect();
+
     addList();
+    addStyle();
   });
 
-  observer.observe(document.querySelector('aside'), { childList: true, subtree: true });
-
-  function checkItem() {
-    return document.querySelector('[class*=myBoard_boardItem__]') != null;
-  }
+  observer.observe(document.body, { childList: true });
 
   function addList() {
     const lastBoard = document.createElement('div');
@@ -60,8 +49,6 @@
     });
 
     document.querySelector('.max-w-tower').firstElementChild.prepend(lastBoard);
-
-    addStyle();
   }
 
   function deleteBoard(event) {
@@ -71,19 +58,21 @@
       return;
     }
 
-    const data = getData().filter(([sn]) => sn !== bsn);
+    const data = encodeURIComponent(JSON.stringify(getData().filter(([sn]) => sn !== bsn)));
+    const expires = new Date();
 
-    window.Cookies.set("ckBH_lastBoard", JSON.stringify(data), {
-      domain: "gamer.com.tw",
-      path: "/",
-      expires: 365
-    });
+    expires.setDate(expires.getDate() + 365);
+
+    document.cookie = `ckBH_lastBoard=${data}; domain=gamer.com.tw; path=/; expires=${expires.toUTCString()};`;
 
     event.target.parentNode.remove();
   }
 
   function getData() {
-    return JSON.parse(window.Cookies.get('ckBH_lastBoard') || '[]');
+    return JSON.parse(
+      decodeURIComponent(document.cookie).split('; ').find(c => c.startsWith('ckBH_lastBoard'))?.split('=')?.at(-1)
+      ?? '[]'
+    );
   }
 
   function addStyle() {
@@ -105,5 +94,6 @@
     `;
 
     document.body.append(style);
+    document.body.insertAdjacentHTML('beforeend', '<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">');
   }
 })();
