@@ -1,4 +1,4 @@
-﻿// ==UserScript==
+// ==UserScript==
 // @name         なろう - 目次ページにすべてのエピソードを表示します
 // @name:zh-TW   なろう - 目錄頁面顯示全部章節
 // @namespace    Sayuki2123

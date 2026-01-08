@@ -1,4 +1,4 @@
-﻿// ==UserScript==
+// ==UserScript==
 // @name         巴哈姆特 - 哈拉區最近閱覽看板紀錄數量增加
 // @namespace    Sayuki2123
 // @version      1.0.0
