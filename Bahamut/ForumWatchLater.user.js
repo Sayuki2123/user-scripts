@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         巴哈姆特 - 稍後觀看
 // @namespace    Sayuki2123
-// @version      1.1.0
+// @version      1.1.1
 // @description  在哈拉區加入稍後觀看的功能
 // @author       Sayuki2123
 // @homepage     https://github.com/Sayuki2123/user-scripts/tree/main/Bahamut#稍後觀看
@@ -10,6 +10,7 @@
 // @icon         https://i2.bahamut.com.tw/favicon.svg
 // @grant        GM_setValue
 // @grant        GM_getValue
+// @run-at       document-end
 // @noframes
 // ==/UserScript==
 

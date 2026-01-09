@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         巴哈姆特 - 哈拉區搜尋紀錄個別刪除
 // @namespace    Sayuki2123
-// @version      1.1.0
+// @version      1.1.1
 // @description  哈拉區的搜尋紀錄可以個別刪除
 // @author       Sayuki2123
 // @homepage     https://github.com/Sayuki2123/user-scripts/tree/main/Bahamut#哈拉區搜尋紀錄個別刪除
@@ -9,6 +9,7 @@
 // @match        https://forum.gamer.com.tw/*.php?*bsn=*
 // @icon         https://i2.bahamut.com.tw/favicon.svg
 // @grant        none
+// @run-at       document-end
 // ==/UserScript==
 
 (() => {

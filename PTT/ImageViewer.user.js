@@ -1,29 +1,25 @@
 // ==UserScript==
 // @name         PTT - 圖片檢視器
 // @namespace    Sayuki2123
-// @version      1.1.1
+// @version      1.1.2
 // @description  在 PTT 網頁版使用 PhotoSwipe 檢視圖片
 // @author       Sayuki2123
 // @homepage     https://github.com/Sayuki2123/user-scripts/tree/main/PTT#圖片檢視器
 // @supportURL   https://github.com/Sayuki2123/user-scripts/issues
 // @match        https://www.ptt.cc/*/M.*.html
+// @require      https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/photoswipe.min.js
+// @require      https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/photoswipe-ui-default.min.js
 // @grant        none
-// @run-at       document-body
+// @run-at       document-end
 // ==/UserScript==
 
 (() => {
   'use strict';
 
-  document.addEventListener('DOMContentLoaded', () => {
-    if (document.getElementsByTagName('img').length === 0) {
-      return;
-    }
+  classifyImages();
+  addPhotoSwipe();
 
-    classifyImages();
-    addPhotoSwipe();
-
-    document.getElementById('main-content').addEventListener('click', showImage);
-  });
+  document.getElementById('main-content').addEventListener('click', showImage);
 
   function showImage(event) {
     const img = event.target;
@@ -49,7 +45,7 @@
     document.querySelectorAll(`img[data-group="${parseInt(img.dataset.group)}"]`)
       .forEach((image) => imageList.push({ src: image.src, w: 0, h: 0 }));
 
-    const gallery = new window.PhotoSwipe(document.querySelector('.pswp'), PhotoSwipeUI_Default, imageList, options);
+    const gallery = new PhotoSwipe(document.querySelector('.pswp'), PhotoSwipeUI_Default, imageList, options);
 
     gallery.listen('gettingData', getData);
     gallery.init();
@@ -189,8 +185,6 @@
       </div>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/photoswipe.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/default-skin/default-skin.min.css">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/photoswipe.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
       <style>img { cursor: pointer; } .pswp__img { max-height: none; }</style>
     `));
   }

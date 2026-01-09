@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         巴哈姆特動畫瘋 - AniMaid
 // @namespace    Sayuki2123
-// @version      1.4.0
+// @version      1.4.1
 // @description  在動畫瘋加入額外的功能和快捷鍵
 // @author       Sayuki2123
 // @homepage     https://github.com/Sayuki2123/user-scripts/tree/main/BahamutAnime#animaid
@@ -10,6 +10,7 @@
 // @icon         https://ani.gamer.com.tw/apple-touch-icon-72.jpg
 // @grant        GM_setValue
 // @grant        GM_getValue
+// @run-at       document-end
 // ==/UserScript==
 
 (() => {
