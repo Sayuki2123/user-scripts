@@ -1,13 +1,12 @@
 // ==UserScript==
-// @name         巴哈姆特 - 哈拉區首頁最近閱覽看板
+// @name         巴哈姆特 - 哈拉區顯示最近閱覽看板
 // @namespace    Sayuki2123
-// @version      1.0.2
-// @description  在哈拉區新版首頁顯示舊版的最近閱覽看板區域
+// @version      1.1.0
+// @description  在哈拉區新版首頁和首頁以外的上方看板選單顯示最近閱覽看板
 // @author       Sayuki2123
-// @homepage     https://github.com/Sayuki2123/user-scripts/tree/main/Bahamut#哈拉區首頁最近閱覽看板
+// @homepage     https://github.com/Sayuki2123/user-scripts/tree/main/Bahamut#哈拉區顯示最近閱覽看板
 // @supportURL   https://github.com/Sayuki2123/user-scripts/issues
-// @match        https://forum.gamer.com.tw/
-// @match        https://forum.gamer.com.tw/?c=*
+// @match        https://forum.gamer.com.tw/*
 // @icon         https://i2.bahamut.com.tw/favicon.svg
 // @grant        none
 // @run-at       document-end
@@ -16,16 +15,27 @@
 (() => {
   'use strict';
 
-  const observer = new MutationObserver((_, observer) => {
-    observer.disconnect();
+  if (location.pathname === '/') {
+    const observer = new MutationObserver((_, observer) => {
+      observer.disconnect();
 
-    addList();
-    addStyle();
-  });
+      addHomepageList();
+      addHomepageStyle();
+    });
 
-  observer.observe(document.body, { childList: true });
+    observer.observe(document.body, { childList: true });
+  } else {
+    addTopBarList();
+    addTopBarStyle();
+  }
 
-  function addList() {
+  function addHomepageList() {
+    const container = document.querySelector('.max-w-tower')?.firstElementChild;
+
+    if (container == null) {
+      return;
+    }
+
     const lastBoard = document.createElement('div');
 
     lastBoard.id = 'forum-lastBoard';
@@ -48,7 +58,36 @@
       `);
     });
 
-    document.querySelector('.max-w-tower').firstElementChild.prepend(lastBoard);
+    container.prepend(lastBoard);
+  }
+
+  function addTopBarList() {
+    const topBar = document.querySelector('#BH-menu-path > .BH-menuE > .dropList');
+
+    if (topBar == null) {
+      return;
+    }
+
+    const lastBoard = document.createElement('dl');
+
+    lastBoard.className = "lastBoard";
+
+    getData().forEach(([bsn, name]) => {
+      lastBoard.insertAdjacentHTML('beforeend', `
+        <dd class="lastBoard-item">
+          <a href="B.php?bsn=${bsn}">${name}</a>
+        </dd>
+      `);
+    });
+
+    topBar.append(lastBoard);
+    topBar.addEventListener('mouseover', function () {
+      window.jQuery("#navBarHover").stop().animate({
+        left: 0,
+        width: this.offsetWidth,
+        opacity: 1
+      }, 200);
+    });
   }
 
   function deleteBoard(event) {
@@ -75,7 +114,7 @@
     );
   }
 
-  function addStyle() {
+  function addHomepageStyle() {
     const style = document.createElement('style');
 
     style.textContent = `
@@ -95,5 +134,25 @@
 
     document.body.append(style);
     document.body.insertAdjacentHTML('beforeend', '<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">');
+  }
+
+  function addTopBarStyle() {
+    const style = document.createElement('style');
+
+    style.textContent = `
+      .dropList > .lastBoard {
+        right: unset;
+        left: 0;
+        display: block;
+        visibility: hidden;
+      }
+
+      .dropList:hover > .lastBoard {
+        visibility: visible;
+        transition: visibility 0s 0.25s;
+      }
+    `;
+
+    document.body.append(style);
   }
 })();
