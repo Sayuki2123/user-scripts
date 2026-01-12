@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PTT - 統一文章格式
 // @namespace    Sayuki2123
-// @version      1.2.2
+// @version      1.2.3
 // @description  統一 PTT 網頁版的文章和推文的格式並顯示樓層數
 // @author       Sayuki2123
 // @homepage     https://github.com/Sayuki2123/user-scripts/tree/main/PTT#統一文章格式
@@ -88,14 +88,10 @@
     }
 
     function checkPostLink() {
-      mainContent.querySelectorAll(`a[href="${location.href}"]`).forEach((link) => {
-        if (link.parentNode !== mainContent) {
-          return;
-        }
-
+      mainContent.querySelectorAll('#main-content > span.f2 + a').forEach((link) => {
         const previousNode = link.previousSibling;
 
-        if (previousNode.nodeName === 'SPAN' && previousNode.textContent.startsWith('※ 文章網址:')) {
+        if (previousNode.textContent.startsWith('※ 文章網址:')) {
           link.textContent = link.textContent;
           previousNode.append(link);
         }
