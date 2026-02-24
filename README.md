@@ -30,6 +30,7 @@
   * BOOK☆WALKER JP
     * [醒目標示期間限定免費版本](#醒目標示期間限定免費版本)
     * [優惠活動輪播加速](#優惠活動輪播加速)
+    * [顯示折扣百分比](#顯示折扣百分比)
     * [搜尋條件的儲存數量限制解除](#搜尋條件的儲存數量限制解除)
 
   * コミックシーモア
@@ -170,6 +171,13 @@
   >
   > [安裝](https://github.com/Sayuki2123/user-scripts/raw/main/BookwalkerJP/FasterSwiper.user.js) /
   > [詳細資訊](BookwalkerJP#優惠活動輪播加速)
+
+* #### 顯示折扣百分比
+
+  > 在特價書籍的詳細頁面顯示折扣百分比
+  >
+  > [安裝](https://github.com/Sayuki2123/user-scripts/raw/main/BookwalkerJP/ShowPercentageDiscount.user.js) /
+  > [詳細資訊](BookwalkerJP#顯示折扣百分比)
 
 * #### 搜尋條件的儲存數量限制解除
 
