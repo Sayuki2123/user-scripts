@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         巴哈姆特 - 哈拉區顯示最近閱覽看板
 // @namespace    Sayuki2123
-// @version      1.1.0
+// @version      1.1.1
 // @description  在哈拉區新版首頁和首頁以外的上方看板選單顯示最近閱覽看板
 // @author       Sayuki2123
 // @homepage     https://github.com/Sayuki2123/user-scripts/tree/main/Bahamut#哈拉區顯示最近閱覽看板
@@ -16,20 +16,22 @@
   'use strict';
 
   if (location.pathname === '/') {
-    const observer = new MutationObserver((_, observer) => {
-      observer.disconnect();
-
-      addHomepageList();
-      addHomepageStyle();
-    });
-
+    const observer = new MutationObserver(addHomepageList);
     observer.observe(document.body, { childList: true });
+
+    addHomepageStyle();
   } else {
     addTopBarList();
     addTopBarStyle();
   }
 
   function addHomepageList() {
+    const id = 'forum-lastBoard';
+
+    if (document.getElementById(id) != null) {
+      return;
+    }
+
     const container = document.querySelector('.max-w-tower')?.firstElementChild;
 
     if (container == null) {
@@ -38,7 +40,7 @@
 
     const lastBoard = document.createElement('div');
 
-    lastBoard.id = 'forum-lastBoard';
+    lastBoard.id = id;
     lastBoard.className = 'w-full mb-4 overflow-hidden text-secondary-text bg-f1-bg rounded';
 
     lastBoard.addEventListener('click', deleteBoard);
