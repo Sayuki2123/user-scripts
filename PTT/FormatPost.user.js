@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PTT - 統一文章格式
 // @namespace    Sayuki2123
-// @version      1.2.3
+// @version      1.2.4
 // @description  統一 PTT 網頁版的文章和推文的格式並顯示樓層數
 // @author       Sayuki2123
 // @homepage     https://github.com/Sayuki2123/user-scripts/tree/main/PTT#統一文章格式
@@ -114,7 +114,7 @@
     }
 
     function checkMissingPushTag() {
-      const regex = /\n(\[(\d;)?\d+m)?[推噓→※]\s?$/;
+      const regex = /\n(\S?\[(\d;)?\d+m)?[推噓→※]\s?$/;
 
       mainContent.querySelectorAll('#main-content > .f3').forEach((nextNode) => {
         const node = nextNode.previousSibling;
@@ -283,16 +283,17 @@
           nextNode.parentNode.insertBefore(nodeContent, nextNode);
         }
 
-        fixPushDate(nextNode);
+        return fixPushDate(nextNode);
+      }
 
-        return true;
+      function getDateText(node, pattern) {
+        return node.textContent.match(pattern)?.at(0)?.trim();
       }
 
       function fixPushDate(node) {
         let nodeDateTime = node;
         let dateText;
-        const regex = /((\d{1,3}\.){3}\d{1,3}\s+)?(\d\n?){2}\/(\d\n?){2}(\s+(\d\n?){2}:(\d\n?){2})?/;
-        const getDateText = (node, pattern) => node.textContent.match(pattern)?.at(0)?.trim();
+        const regex = /((\d{1,3}\.){3}\d{1,3}\s+)?(\d\s?){1,2}\/\s?(\d\s?){1,2}(\s?(\d\s?){1,2}:\s?(\d\s?){1,2})?/;
 
         if (
           (nodeDateTime.nodeName === 'SPAN' || nodeDateTime.nodeType === Node.TEXT_NODE)
@@ -319,7 +320,7 @@
             needReplaceTemp = true;
           } else {
             // 往後面找，直到遇到 div 或 .hl (未處理的 tag 或 userid)
-            tempNode = nodeDateTime;
+            tempNode = nodeDateTime.parentNode.classList.contains('push') ? nodeDateTime.parentNode : nodeDateTime;
 
             while (dateText == null && (tempNode = tempNode.nextSibling) != null) {
               if (tempNode.nodeName === 'DIV' || tempNode.classList?.contains('hl')) {
@@ -368,9 +369,10 @@
 
           nodeDateTime.parentNode.insertBefore(newNode, nodeDateTime);
           newNode.append(nodeDateTime);
-
-          nodeDateTime = newNode;
+          newNode.classList.add('push-ipdatetime');
         }
+
+        return true;
       }
     }
 
@@ -492,13 +494,13 @@
     }
 
     function addClickEvent() {
-      // 在頂端列加入文章標題，點擊可以在新分頁開啟同標題文章的搜尋結果
+      // 在頂端列加入文章標題，點擊可以搜尋相同標題的文章
       const title = Array.from(mainContent.querySelectorAll('.article-meta-tag'))
         .find((tag) => tag.textContent === '標題')?.nextElementSibling?.textContent;
 
       if (title != null) {
         const boardName = document.querySelector('.board-label')?.nextSibling?.textContent;
-        const href = encodeURI(`/bbs/${boardName}/search?q=${title.replace('Re:', '').replaceAll(' ', '+')}`);
+        const href = `/bbs/${boardName}/search?q=${encodeURIComponent(title.replace('Re:', '')).replaceAll('%20', '+')}`;
 
         document.getElementById('topbar').insertAdjacentHTML('beforeend', `
           <span>›</span>
